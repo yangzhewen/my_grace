@@ -1,5 +1,5 @@
 .*.sw*
-*.csv
+
 *.ipynb
 
 *.pth
@@ -11,9 +11,10 @@
 
 *.mp4
 *.y4m
+*.yuv
+*.zip
+*.tar
 
-*.png
-*.jpg
 *.pdf
 
 *DS_Store
@@ -21,3 +22,4 @@
 !/error_concealment_interface/libs/
 !/error_concealment_interface/libs/**/
 !/error_concealment_interface/libs/**/*.pth
+!/videos/testvideos/.nfs000000000000050e00000001
