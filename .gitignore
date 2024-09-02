@@ -22,4 +22,4 @@
 !/error_concealment_interface/libs/
 !/error_concealment_interface/libs/**/
 !/error_concealment_interface/libs/**/*.pth
-videos/testvideos/.nfs000000000000050e00000001
+.nfs*
