@@ -175,16 +175,18 @@ def read_video_into_frames(video_path, frame_size = None, nframes=1000):
         os.system("rm -rf {}".format(tmp_path))
 
     frame_path = create_temp_path()
-    if frame_size is None:
+    if video_path.endswith(".yuv"):
+        width, height = 1920, 1080  # 假设YUV格式的视频是1920x1080，你需要根据实际情况调整
+        cmd = f"ffmpeg -s {width}x{height} -pix_fmt yuv420p -i {video_path} {frame_path}/%03d.png 2>/dev/null 1>/dev/null"
+    elif frame_size is None:
         cmd = f"ffmpeg -i {video_path} {frame_path}/%03d.png 2>/dev/null 1>/dev/null"
-        #cmd = f"ffmpeg -i {video_path} {frame_path}/%03d.png"
     else:
         width, height = frame_size
         cmd = f"ffmpeg -i {video_path} -s {width}x{height} {frame_path}/%03d.png 2>/dev/null 1>/dev/null"
 
     print(cmd)
     os.system(cmd)
-    
+
     image_names = os.listdir(frame_path)
     frames = []
     for img_name in sorted(image_names)[:nframes]:
